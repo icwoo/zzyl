@@ -28,4 +28,6 @@ public interface NursingProjectMapper {
      * @param np
      */
     void updeateById(NursingProject np);
+
+    void createNursingProject(NursingProject np);
 }

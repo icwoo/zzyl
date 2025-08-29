@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NursingProjectDto {
-    private Integer page=1;
+    private Integer pageNum=1;
     private Integer pageSize=10;
     @ApiModelProperty("名称")
     private String name;

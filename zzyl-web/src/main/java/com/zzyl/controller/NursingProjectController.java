@@ -26,7 +26,7 @@ public class NursingProjectController {
 
     @GetMapping
     @ApiOperation("分页查询护理项目列表")
-    public ResponseResult<NursingProjectVo> findByPage(NursingProjectDto nursingProjectDto) {
+    public ResponseResult<PageResponse<NursingProjectVo>> findByPage(NursingProjectDto nursingProjectDto) {
         log.info("分页查询护理项目列表,参数：{}", nursingProjectDto);
         PageResponse<NursingProjectVo> pageList = nursingProjectService.findByPage(nursingProjectDto);
 
@@ -49,6 +49,15 @@ public class NursingProjectController {
         log.info("修改护理项目,修改人id:{}", nursingProjectVo.getUpdateBy());
         nursingProjectService.updeateById(nursingProjectVo);
 
+        return ResponseResult.success();
+    }
+
+    @PostMapping
+    @ApiOperation("新增护理项目")
+    public ResponseResult createNursingProject(@RequestBody NursingProjectVo nursingProjectVo) {
+        //用Vo是因为俺设计的dto不能接收这么多参数，vo刚好能收
+        log.info("新增护理项目");
+        nursingProjectService.createNursingProject(nursingProjectVo);
         return ResponseResult.success();
     }
 

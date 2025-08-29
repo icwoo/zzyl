@@ -15,6 +15,7 @@ import com.zzyl.vo.NursingProjectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -26,22 +27,18 @@ import java.util.List;
 public class NursingProjectServiceImpl implements NursingProjectService {
     @Autowired
     private NursingProjectMapper nursingProjectMapper;
+
     @Override
     public PageResponse<NursingProjectVo> findByPage(NursingProjectDto nursingProjectDto) {
-        PageHelper.startPage(nursingProjectDto.getPage(),nursingProjectDto.getPageSize());
-        List<NursingProjectVo> list= null;
-        try {
-            list = nursingProjectMapper.findByPages(nursingProjectDto.getName(),nursingProjectDto.getStatus());
-        } catch (Exception e) {
-            throw new BaseException(BasicEnum.BED_INSERT_FAIL);
-        }
-        PageResponse<NursingProjectVo> pages= PageResponse.of(list);
-        return pages;
+        PageHelper.startPage(nursingProjectDto.getPageNum(),nursingProjectDto.getPageSize());
+        List<NursingProjectVo> list = nursingProjectMapper.findByPages(nursingProjectDto.getName(), nursingProjectDto.getStatus());
+        //前端没写分页，写这个浪费表情
+        return PageResponse.of(list);
     }
 
     @Override
     public NursingProjectVo findById(Long id) {
-         NursingProject np= nursingProjectMapper.findById(id);
+        NursingProject np = nursingProjectMapper.findById(id);
         NursingProjectVo nv = BeanUtil.toBean(np, NursingProjectVo.class);
         return nv;
     }
@@ -50,5 +47,14 @@ public class NursingProjectServiceImpl implements NursingProjectService {
     public void updeateById(NursingProjectVo nursingProjectVo) {
         NursingProject np = BeanUtil.toBean(nursingProjectVo, NursingProject.class);
         nursingProjectMapper.updeateById(np);
+    }
+
+    @Override
+    public void createNursingProject(NursingProjectVo nursingProjectVo) {
+        NursingProject np = BeanUtil.toBean(nursingProjectVo, NursingProject.class);
+//        np.setCreateTime(LocalDateTime.now());
+        np.setCreateBy(1L);
+        nursingProjectMapper.createNursingProject(np);
+
     }
 }

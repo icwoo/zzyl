@@ -26,4 +26,6 @@ public interface NursingProjectService {
      * @param nursingProjectVo
      */
     void updeateById(NursingProjectVo nursingProjectVo);
+
+    void createNursingProject(NursingProjectVo nursingProjectVo);
 }

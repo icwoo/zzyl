@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zzyl.mapper.NursingProjectMapper">
+    <insert id="createNursingProject">
+        insert into nursing_project(name,price,unit,order_no,status,image,nursing_requirement,remark,create_by)
+        values (#{name},#{price},#{unit},#{orderNo},#{status},#{image},#{nursingRequirement},#{remark},#{createBy})
+    </insert>
 
     <select id="findByPages" resultType="com.zzyl.vo.NursingProjectVo">
         select p.*,su.real_name as creator from nursing_project p left join sys_user su on p.create_by = su.id
