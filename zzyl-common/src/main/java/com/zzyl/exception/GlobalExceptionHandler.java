@@ -13,7 +13,6 @@ public class GlobalExceptionHandler {
     /**
      * 处理自定义异常BaseException。
      * 返回自定义异常中的错误代码和错误消息。
-     *
      * @param exception 自定义异常
      * @return 响应数据，包含错误代码和错误消息
      */
