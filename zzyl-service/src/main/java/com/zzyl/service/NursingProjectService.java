@@ -13,4 +13,17 @@ import com.zzyl.vo.NursingProjectVo;
 public interface NursingProjectService {
 
     PageResponse<NursingProjectVo> findByPage(NursingProjectDto nursingProjectDto);
+
+    /**
+     * 根据id查询护理项目
+     * @param id
+     * @return
+     */
+    NursingProjectVo findById(Long id);
+
+    /**
+     * 修改护理项目
+     * @param nursingProjectVo
+     */
+    void updeateById(NursingProjectVo nursingProjectVo);
 }

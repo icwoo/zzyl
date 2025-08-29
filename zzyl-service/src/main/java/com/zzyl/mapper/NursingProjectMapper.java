@@ -15,4 +15,17 @@ import java.util.List;
 public interface NursingProjectMapper {
 
     List<NursingProjectVo> findByPages(String name, Integer status);
+
+    /**
+     * 根据id查询护理项目
+     * @param id
+     * @return
+     */
+    NursingProject findById(Long id);
+
+    /**
+     * 修改护理项目
+     * @param np
+     */
+    void updeateById(NursingProject np);
 }

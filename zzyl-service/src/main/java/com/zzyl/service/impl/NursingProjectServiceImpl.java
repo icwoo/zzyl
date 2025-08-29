@@ -1,9 +1,11 @@
 package com.zzyl.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zzyl.base.PageResponse;
 import com.zzyl.dto.NursingProjectDto;
+import com.zzyl.entity.Bed;
 import com.zzyl.entity.NursingProject;
 import com.zzyl.enums.BasicEnum;
 import com.zzyl.exception.BaseException;
@@ -35,5 +37,18 @@ public class NursingProjectServiceImpl implements NursingProjectService {
         }
         PageResponse<NursingProjectVo> pages= PageResponse.of(list);
         return pages;
+    }
+
+    @Override
+    public NursingProjectVo findById(Long id) {
+         NursingProject np= nursingProjectMapper.findById(id);
+        NursingProjectVo nv = BeanUtil.toBean(np, NursingProjectVo.class);
+        return nv;
+    }
+
+    @Override
+    public void updeateById(NursingProjectVo nursingProjectVo) {
+        NursingProject np = BeanUtil.toBean(nursingProjectVo, NursingProject.class);
+        nursingProjectMapper.updeateById(np);
     }
 }
