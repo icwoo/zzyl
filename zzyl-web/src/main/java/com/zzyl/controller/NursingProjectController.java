@@ -61,4 +61,19 @@ public class NursingProjectController {
         return ResponseResult.success();
     }
 
+    @DeleteMapping("/{id}")
+    @ApiOperation("删除护理项目")
+    public ResponseResult deleteById(@PathVariable Long id) {
+        log.info("删除护理项目");
+        nursingProjectService.deleteById(id);
+        return ResponseResult.success();
+    }
+    @PutMapping("/{id}/status/{status}")
+    @ApiOperation("启用禁用护理项目")
+    public ResponseResult changeStatus(@PathVariable Long id,@PathVariable Integer status) {
+        log.info("启用禁用护理项目,id:{},status:{}",id,status);
+        nursingProjectService.changeStatus(id,status);
+        return ResponseResult.success();
+    }
+
 }

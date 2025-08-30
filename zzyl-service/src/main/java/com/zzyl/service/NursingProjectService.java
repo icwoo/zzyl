@@ -28,4 +28,8 @@ public interface NursingProjectService {
     void updeateById(NursingProjectVo nursingProjectVo);
 
     void createNursingProject(NursingProjectVo nursingProjectVo);
+
+    void deleteById(Long id);
+
+    void changeStatus(Long id, Integer status);
 }

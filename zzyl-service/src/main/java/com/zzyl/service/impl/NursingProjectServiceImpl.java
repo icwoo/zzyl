@@ -57,4 +57,14 @@ public class NursingProjectServiceImpl implements NursingProjectService {
         nursingProjectMapper.createNursingProject(np);
 
     }
+
+    @Override
+    public void deleteById(Long id) {
+        nursingProjectMapper.deleteById(id);
+    }
+
+    @Override
+    public void changeStatus(Long id, Integer status) {
+        nursingProjectMapper.changeStatus(id,status);
+    }
 }

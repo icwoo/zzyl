@@ -2,7 +2,9 @@ package com.zzyl.mapper;
 
 import com.zzyl.entity.NursingProject;
 import com.zzyl.vo.NursingProjectVo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -30,4 +32,10 @@ public interface NursingProjectMapper {
     void updeateById(NursingProject np);
 
     void createNursingProject(NursingProject np);
+
+    @Delete("delete from nursing_project where id=#{id}")
+    void deleteById(Long id);
+
+    @Update("update nursing_project set status=#{status} where id=#{id}")
+    void changeStatus(Long id, Integer status);
 }
