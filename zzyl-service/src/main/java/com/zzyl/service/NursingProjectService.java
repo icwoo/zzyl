@@ -1,9 +1,10 @@
 package com.zzyl.service;
 
-import com.github.pagehelper.Page;
 import com.zzyl.base.PageResponse;
 import com.zzyl.dto.NursingProjectDto;
 import com.zzyl.vo.NursingProjectVo;
+
+import java.util.List;
 
 /**
  * @Description NursingProjectService
@@ -32,4 +33,6 @@ public interface NursingProjectService {
     void deleteById(Long id);
 
     void changeStatus(Long id, Integer status);
+
+    List<NursingProjectVo> findAll();
 }

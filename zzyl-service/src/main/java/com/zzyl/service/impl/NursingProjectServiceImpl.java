@@ -1,21 +1,16 @@
 package com.zzyl.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zzyl.base.PageResponse;
 import com.zzyl.dto.NursingProjectDto;
-import com.zzyl.entity.Bed;
 import com.zzyl.entity.NursingProject;
-import com.zzyl.enums.BasicEnum;
-import com.zzyl.exception.BaseException;
 import com.zzyl.mapper.NursingProjectMapper;
 import com.zzyl.service.NursingProjectService;
 import com.zzyl.vo.NursingProjectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -66,5 +61,12 @@ public class NursingProjectServiceImpl implements NursingProjectService {
     @Override
     public void changeStatus(Long id, Integer status) {
         nursingProjectMapper.changeStatus(id,status);
+    }
+
+    @Override
+    public List<NursingProjectVo> findAll() {
+
+         List<NursingProjectVo> nvlist=nursingProjectMapper.findAll();
+        return nvlist;
     }
 }

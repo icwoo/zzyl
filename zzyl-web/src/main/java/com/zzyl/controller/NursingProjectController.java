@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Description 护理项目Controller类
  * @Author Lisheng Li
@@ -74,6 +76,13 @@ public class NursingProjectController {
         log.info("启用禁用护理项目,id:{},status:{}",id,status);
         nursingProjectService.changeStatus(id,status);
         return ResponseResult.success();
+    }
+    @GetMapping("/all")
+    @ApiOperation("查询所有护理项目")
+    public ResponseResult changeStatus() {
+        log.info("查询所有护理项目");
+        List<NursingProjectVo> nv=  nursingProjectService.findAll();
+        return ResponseResult.success(nv);
     }
 
 }
